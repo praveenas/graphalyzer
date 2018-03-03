@@ -1,12 +1,27 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+
+    <script src="jquery.ui.touch-punch.min.js"></script>
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <script>
+
+
+        $('#ball').draggable();
+        $( "#boy" ).droppable({
+//            drop: function( event, ui ) {
+//                $( this )
+//                        .addClass( "isDropped" )
+//                        .html( "Dropped!" );
+//            }
+        });
+
+
         function allowDrop(ev) {
             ev.preventDefault();
 
@@ -40,11 +55,11 @@
 
         .boy {
             /*margin-bottom: -35px;*/
-            /*border: 1px solid blue;*/
+            border: 1px solid blue;
             width: 300px;
             height: 200px;
             position: absolute;
-            left: 680px;
+            left: 610px;
             top: 400px;
             /*z-index: -1;*/
 
@@ -73,7 +88,7 @@
 
 <div class="container">
 
-    <div class="jumbotron">
+    <!--<div class="jumbotron">-->
 
         <div>
         <h1> Give the <span style="color:red; text-transform: uppercase">ball</span> to the
@@ -89,8 +104,8 @@
         </div>
 
 
-        <div class="boy" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-        <div class="girl" ondrop="denyDrop(event)" ondragover="allowDrop(event)"></div>
+        <div id="boy" class="boy" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="girl" class="girl" ondrop="denyDrop(event)" ondragover="allowDrop(event)"></div>
         <div>
             <img height="500px" width="900px"
                  src="https://openclipart.org/download/233385/girlc.svg"
@@ -98,7 +113,7 @@
         </div>
     </div>
 
-</div>
+<!--</div>-->
 
 
 </body>
