@@ -10,11 +10,15 @@
 
     <script>
         $(function () {
-            $('#ball').draggable();
+            $('#ball').draggable({
+                cursor: "crosshair"
+                
+            });
             $("#boy").droppable({
                 drop: function (event, ui) {
                     var audio = new Audio('http://soundbible.com/mp3/Cheering-SoundBible.com-1115515042.mp3');
                     audio.play();
+                    alert("Yaaay who has the ball?")
                 }
             });
         });
