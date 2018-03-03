@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+
+        }
+
+        function denyDrop(ev) {
+            //ev.preventDefault();
+            var audio = new Audio('/Users/praveena/Desktop/try_again.mp3');
+            audio.play();
+
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+            var audio = new Audio('http://soundbible.com/mp3/Cheering-SoundBible.com-1115515042.mp3');
+            audio.play();
+//            alert("dropped!!!!")
+        }
+    </script>
+    <style>
+
+        .jumbotron {
+            height: 160px;
+        }
+
+        .boy {
+            /*margin-bottom: -35px;*/
+            border: 1px solid blue;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            left: 600px;
+            top: 500px;
+            /*z-index: -1;*/
+
+        }
+
+        .girl {
+            /*margin-top: -75px;*/
+            border: 1px solid red;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            left: 300px;
+            top: 500px;
+            /*z-index: -1;*/
+        }
+
+        #ball {
+            /*z-index: 1;*/
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="jumbotron"><h1> Give the <span style="color:red; text-transform: uppercase">ball</span> to the
+        <span style="color:red; text-transform: uppercase">boy</span>.
+
+        <img id=ball width="100px"
+             height="100px"
+             draggable="true"
+             ondragstart="drag(event)"
+             src="http://www.pngmart.com/files/3/Sports-Ball-PNG-Clipart.png">
+
+    </h1>
+    </div>
+
+
+    <div class="boy" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="girl" ondrop="denyDrop(event)" ondragover="allowDrop(event)"></div>
+    <img height="500px" width="900px"
+         src="https://openclipart.org/download/233385/girlc.svg"
+         alt="boy">
+
+
+</div>
+
+
+</body>
+</html>
